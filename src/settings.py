@@ -29,3 +29,8 @@ elif DB_SGDB == 'postgresql':  # PostgreSQL
     STR_DATABASE = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
 else: # SQLite
     STR_DATABASE = f"sqlite:///apiDatabase.db"
+
+# Configurações Segurança da API
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))

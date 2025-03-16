@@ -6,11 +6,16 @@ from domain.entities.Cliente import Cliente
 import db
 from infra.orm.ClienteModel import ClienteDB
 
-router = APIRouter()
+# import da segurança
+from typing import Annotated
+from fastapi import Depends
+from security import get_current_active_user, User
+
+router = APIRouter(dependencies=[Depends(get_current_active_user)])
 
 # Criar os endpoints de Cliente: GET, POST, PUT, DELETE
 
-@router.get("/cliente/", tags=["Cliente"])
+@router.get("/cliente/", tags=["Cliente"], dependencies=[Depends(get_current_active_user)], )
 async def get_cliente():
     try:
         session = db.Session()

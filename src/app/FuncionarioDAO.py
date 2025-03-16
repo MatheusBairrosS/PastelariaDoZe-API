@@ -6,11 +6,16 @@ from domain.entities.Funcionario import Funcionario
 import db
 from infra.orm.FuncionarioModel import FuncionarioDB
 
-router = APIRouter()
+# import da segurança
+from typing import Annotated
+from fastapi import Depends
+from security import get_current_active_user, User
+
+router = APIRouter(dependencies=[Depends(get_current_active_user)])
 
 # Criar as rotas/endpoints: GET, POST, PUT, DELETE
 
-@router.get("/funcionario/", tags=["Funcionário"])
+@router.get("/funcionario/", tags=["Funcionário"], dependencies=[Depends(get_current_active_user)], )
 async def get_funcionario():
     try:
         session = db.Session()
