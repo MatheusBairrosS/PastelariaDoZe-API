@@ -15,7 +15,7 @@ router = APIRouter(dependencies=[Depends(get_current_active_user)])
 
 # Criar os endpoints de Cliente: GET, POST, PUT, DELETE
 
-@router.get("/cliente/", tags=["Cliente"], dependencies=[Depends(get_current_active_user)], )
+@router.get("/cliente/", tags=["Cliente"])
 async def get_cliente():
     try:
         session = db.Session()

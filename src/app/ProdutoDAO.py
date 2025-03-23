@@ -16,7 +16,7 @@ router = APIRouter(dependencies=[Depends(get_current_active_user)])
 # Criar os endpoints de Cliente: GET, POST, PUT, DELETE
 
 # Rota para buscar todos os produtos
-@router.get("/produto/", tags=["Produto"], dependencies=[Depends(get_current_active_user)], )
+@router.get("/produto/", tags=["Produto"])
 async def get_produto():
     try:
         session = db.Session()

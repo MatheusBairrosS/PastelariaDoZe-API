@@ -15,7 +15,7 @@ router = APIRouter(dependencies=[Depends(get_current_active_user)])
 
 # Criar as rotas/endpoints: GET, POST, PUT, DELETE
 
-@router.get("/funcionario/", tags=["Funcionário"], dependencies=[Depends(get_current_active_user)], )
+@router.get("/funcionario/", tags=["Funcionário"])
 async def get_funcionario():
     try:
         session = db.Session()
